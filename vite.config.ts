@@ -14,10 +14,10 @@ export default defineConfig(({ mode }) => {
       server: {
         port: 3000,
         host: '0.0.0.0',
-                allowedHosts: ['eroum.onrender.com', 'localhost'],
+                allowedHosts: ['terraflow-01.onrender.com', 'localhost'],
       },
             preview: {
-      allowHosts: ['eroum.onrender.com', 'terraflow-01.onrender.com'],
+      allowHosts: ['terraflow-01.onrender.com'],
     },
       plugins: [react()],
       define: {
