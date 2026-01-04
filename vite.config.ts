@@ -17,7 +17,7 @@ export default defineConfig(({ mode }) => {
                 allowedHosts: ['eroum.onrender.com', 'localhost'],
       },
             preview: {
-      allowHosts: ['eroum.onrender.com'],
+      allowHosts: ['eroum.onrender.com', 'terraflow-01.onrender.com'],
     },
       plugins: [react()],
       define: {
