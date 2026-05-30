@@ -35,11 +35,22 @@ function CountUp({ target, suffix }: { target: number; suffix: string }) {
   return <span ref={ref}>0{suffix}</span>;
 }
 
+const VIDEO_URL = 'https://raw.githubusercontent.com/seansim-kor/EF-Solution-Asia/main/public/EF_Asia_MV1.mp4';
+
 export default function HeroSection() {
   return (
-    <section id="hero" className="hero-bg min-h-screen flex flex-col justify-center relative overflow-hidden">
-      {/* Animated gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#081a0f]/80 pointer-events-none" />
+    <section id="hero" className="min-h-screen flex flex-col justify-center relative overflow-hidden bg-[#081a0f]">
+      {/* Background Video */}
+      <video
+        className="absolute inset-0 w-full h-full object-cover"
+        src={VIDEO_URL}
+        autoPlay
+        muted
+        loop
+        playsInline
+      />
+      {/* Dark overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#081a0f]/50 via-[#081a0f]/40 to-[#081a0f]/85 pointer-events-none" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 pt-32 pb-20">
         {/* Eyebrow */}
