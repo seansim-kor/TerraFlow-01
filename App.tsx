@@ -1,70 +1,37 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import Header from './components/Header';
-import HomeSection from './components/HomeSection';
+import HeroSection from './components/HeroSection';
+import ProblemSection from './components/ProblemSection';
 import PhilosophySection from './components/PhilosophySection';
+import TechnologySection from './components/TechnologySection';
 import SolutionsSection from './components/SolutionsSection';
-import ProductsSection from './components/ProductsSection';
+import ProofSection from './components/ProofSection';
+import TestimonialsSection from './components/TestimonialsSection';
 import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
 
-export type View = 'home' | 'philosophy' | 'solutions' | 'products' | 'contact';
-
-const App: React.FC = () => {
-  const [view, setView] = useState<View>('home');
-  const [prevView, setPrevView] = useState<View>('home');
-
-  const handleSetView = (newView: View) => {
-    setPrevView(view);
-    setView(newView);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
-  // Re-run intersection observer on view change
+export default function App() {
   useEffect(() => {
-    const timer = setTimeout(() => {
-      const triggers = document.querySelectorAll('.io-trigger');
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('visible');
-            }
-          });
-        },
-        { threshold: 0.12 }
-      );
-      triggers.forEach((el) => observer.observe(el));
-      return () => observer.disconnect();
-    }, 100);
-    return () => clearTimeout(timer);
-  }, [view]);
-
-  const renderSection = () => {
-    switch (view) {
-      case 'home':
-        return <HomeSection setView={handleSetView} />;
-      case 'philosophy':
-        return <PhilosophySection setView={handleSetView} />;
-      case 'solutions':
-        return <SolutionsSection setView={handleSetView} />;
-      case 'products':
-        return <ProductsSection setView={handleSetView} />;
-      case 'contact':
-        return <ContactSection />;
-      default:
-        return <HomeSection setView={handleSetView} />;
-    }
-  };
+    const observer = new IntersectionObserver(
+      (entries) => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+      { threshold: 0.12 }
+    );
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <div className="antialiased min-h-screen bg-terra-deep text-terra-mist">
-      <Header setView={handleSetView} currentView={view} />
-      <main className="tab-section" key={view}>
-        {renderSection()}
-      </main>
-      <Footer setView={handleSetView} />
+    <div className="min-h-screen">
+      <Header />
+      <HeroSection />
+      <ProblemSection />
+      <PhilosophySection />
+      <TechnologySection />
+      <SolutionsSection />
+      <ProofSection />
+      <TestimonialsSection />
+      <ContactSection />
+      <Footer />
     </div>
   );
-};
-
-export default App;
+}

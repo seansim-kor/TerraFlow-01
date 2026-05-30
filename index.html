@@ -5,205 +5,100 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dr. Terraplus | Rebuild the Soil Ecosystem.</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
     <script>
       tailwind.config = {
         theme: {
           extend: {
-            fontFamily: {
-              sans: ['Inter', 'sans-serif'],
-              serif: ['Playfair Display', 'serif'],
-            },
             colors: {
-              terra: {
-                deep:     '#022c22',
-                darker:   '#011a15',
-                green:    '#059669',
-                'green-light': '#34d399',
-                light:    '#d1fae5',
-                sand:     '#fafaf9',
-                stone:    '#1c1917',
-                amber:    '#d97706',
-                'amber-lt': '#fbbf24',
-                mist:     '#ecfdf5',
-                warm:     '#f5f5f0',
+              tp: {
+                dark:    '#0d2818',
+                darker:  '#081a0f',
+                green:   '#166534',
+                mid:     '#15803d',
+                lime:    '#4ade80',
+                'lime-lt': '#86efac',
+                light:   '#f0fdf4',
+                sand:    '#fafaf9',
+                amber:   '#d97706',
+                gray:    '#f3f4f6',
               }
+            },
+            fontFamily: {
+              serif: ['Playfair Display', 'Georgia', 'serif'],
+              sans:  ['Inter', 'system-ui', 'sans-serif'],
             },
             animation: {
-              'marquee': 'marquee 30s linear infinite',
-              'marquee2': 'marquee2 30s linear infinite',
-              'fade-up': 'fadeUp 0.6s ease forwards',
-              'ken-burns': 'kenBurns 12s ease-in-out infinite alternate',
+              'fade-up': 'fadeUp 0.7s ease forwards',
+              'fade-in': 'fadeIn 0.5s ease forwards',
+              'count':   'count 2s ease-out forwards',
             },
             keyframes: {
-              marquee: {
-                '0%': { transform: 'translateX(0%)' },
-                '100%': { transform: 'translateX(-50%)' },
-              },
-              marquee2: {
-                '0%': { transform: 'translateX(50%)' },
-                '100%': { transform: 'translateX(0%)' },
-              },
-              fadeUp: {
-                '0%': { opacity: '0', transform: 'translateY(24px)' },
-                '100%': { opacity: '1', transform: 'translateY(0)' },
-              },
-              kenBurns: {
-                '0%': { transform: 'scale(1.08)' },
-                '100%': { transform: 'scale(1.0)' },
-              }
+              fadeUp:  { '0%': { opacity: 0, transform: 'translateY(32px)' }, '100%': { opacity: 1, transform: 'translateY(0)' } },
+              fadeIn:  { '0%': { opacity: 0 }, '100%': { opacity: 1 } },
             }
           }
         }
       }
     </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700;900&display=swap" rel="stylesheet" />
     <style>
-      * { box-sizing: border-box; }
-      body {
-        background-color: #022c22;
-        color: #ecfdf5;
-        overflow-x: hidden;
-        font-family: 'Inter', sans-serif;
-      }
-      ::-webkit-scrollbar { width: 6px; }
-      ::-webkit-scrollbar-track { background: #011a15; }
-      ::-webkit-scrollbar-thumb { background: #059669; border-radius: 3px; }
-      .font-serif { font-family: 'Playfair Display', serif; }
+      html { scroll-behavior: smooth; }
+      body { font-family: 'Inter', sans-serif; }
 
-      /* Bar chart animation */
-      .bar-fill {
-        width: 0%;
-        transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-      .bar-fill.animate {
-        width: var(--target-width);
-      }
-
-      /* Spec tab */
-      .spec-tab-content { display: none; }
-      .spec-tab-content.active { display: block; }
-
-      /* Form states */
-      .form-success { display: none; }
-      .form-success.show { display: flex; }
-
-      /* Glow hover rows */
-      .compare-row:hover {
-        background: rgba(5, 150, 105, 0.08);
-        border-color: rgba(5, 150, 105, 0.3);
-      }
-      .compare-row-bad:hover {
-        background: rgba(217, 119, 6, 0.08);
-        border-color: rgba(217, 119, 6, 0.3);
-      }
-
-      /* Smooth section transitions */
-      .tab-section {
-        animation: fadeUp 0.5s ease forwards;
-      }
-
-      /* Pathogen flow arrow animation */
-      @keyframes flowDown {
-        0% { opacity: 0; transform: translateY(-10px); }
-        100% { opacity: 1; transform: translateY(0); }
-      }
-      .flow-step {
-        animation: flowDown 0.6s ease forwards;
-        opacity: 0;
-      }
-      .flow-step:nth-child(1) { animation-delay: 0.1s; }
-      .flow-step:nth-child(2) { animation-delay: 0.3s; }
-      .flow-step:nth-child(3) { animation-delay: 0.5s; }
-      .flow-step:nth-child(4) { animation-delay: 0.7s; }
-      .flow-step:nth-child(5) { animation-delay: 0.9s; }
-
-      /* Hero background placeholder using CSS gradient + pattern */
+      /* Hero */
       .hero-bg {
-        background:
-          linear-gradient(135deg, rgba(2,44,34,0.78) 0%, rgba(1,26,21,0.65) 50%, rgba(2,44,34,0.88) 100%),
-          url('/hero-home.jpg') center/cover no-repeat;
-        animation: kenBurns 14s ease-in-out infinite alternate;
+        background-image: linear-gradient(to bottom, rgba(8,26,15,0.65) 0%, rgba(13,40,24,0.55) 60%, rgba(8,26,15,0.80) 100%), url('/hero-home.jpg');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
       }
+
+      /* Section bgs */
       .philosophy-bg {
-        background:
-          linear-gradient(180deg, rgba(2,44,34,0.85) 0%, rgba(2,44,34,0.65) 100%),
-          url('/hero-philosophy.jpg') center/cover no-repeat;
+        background-image: linear-gradient(to right, rgba(8,26,15,0.88) 0%, rgba(8,26,15,0.60) 100%), url('/hero-philosophy.jpg');
+        background-size: cover;
+        background-position: center;
       }
-      .solutions-bg {
-        background:
-          linear-gradient(180deg, rgba(1,26,21,0.88) 0%, rgba(2,44,34,0.70) 100%),
-          url('/hero-solutions.jpg') center/cover no-repeat;
-      }
-      .products-bg {
-        background:
-          linear-gradient(135deg, rgba(1,26,21,0.92) 0%, rgba(2,44,34,0.80) 50%, rgba(1,23,15,0.95) 100%),
-          url('/hero-products.jpg') center/cover no-repeat;
-      }
-      .contact-bg {
-        background:
-          linear-gradient(180deg, rgba(1,26,21,0.88) 0%, rgba(2,44,34,0.72) 100%),
-          url('/hero-contact.jpg') center/cover no-repeat;
-      }
-      .product-bg {
-        background: linear-gradient(135deg, #011a15 0%, #022c22 50%, #01170f 100%);
+      .eco-bg {
+        background-image: linear-gradient(to right, rgba(22,101,52,0.92) 0%, rgba(21,128,61,0.75) 100%), url('/hero-contact.jpg');
+        background-size: cover;
+        background-position: center;
       }
 
-      /* Marquee wrapper */
-      .marquee-wrapper {
-        display: flex;
-        overflow: hidden;
-        white-space: nowrap;
-        width: 100%;
+      /* Nav link hover */
+      .nav-link { position: relative; }
+      .nav-link::after {
+        content: '';
+        position: absolute;
+        bottom: -2px; left: 0;
+        width: 0; height: 2px;
+        background: #4ade80;
+        transition: width 0.25s ease;
       }
-      .marquee-track {
-        display: flex;
-        animation: marquee 28s linear infinite;
-        width: max-content;
+      .nav-link:hover::after { width: 100%; }
+
+      /* Card hover glow */
+      .card-glow:hover {
+        border-color: #4ade80 !important;
+        box-shadow: 0 0 20px rgba(74,222,128,0.15);
+        transform: translateY(-3px);
+        transition: all 0.25s ease;
       }
 
-      /* Number counter */
-      .counter-num {
-        display: inline-block;
-        min-width: 3ch;
-      }
+      /* Scrollbar */
+      ::-webkit-scrollbar { width: 6px; }
+      ::-webkit-scrollbar-track { background: #081a0f; }
+      ::-webkit-scrollbar-thumb { background: #166534; border-radius: 3px; }
 
-      /* Download button states */
-      .dl-btn:hover .dl-label { display: none; }
-      .dl-btn:hover .dl-hover { display: inline; }
-      .dl-hover { display: none; }
-
-      /* Intersection observer trigger */
-      .io-trigger { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
-      .io-trigger.visible { opacity: 1; transform: translateY(0); }
-      .io-trigger.delay-1 { transition-delay: 0.1s; }
-      .io-trigger.delay-2 { transition-delay: 0.2s; }
-      .io-trigger.delay-3 { transition-delay: 0.3s; }
-      .io-trigger.delay-4 { transition-delay: 0.4s; }
-      .io-trigger.delay-5 { transition-delay: 0.5s; }
-
-      /* Mobile menu */
-      #mobile-menu { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
-      #mobile-menu.open { max-height: 400px; }
+      /* Section reveal */
+      .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+      .reveal.visible { opacity: 1; transform: translateY(0); }
     </style>
-  <script type="importmap">
-{
-  "imports": {
-    "react": "https://esm.sh/react@^19.2.3",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
-    "react/": "https://esm.sh/react@^19.2.3/",
-    "lucide-react": "https://esm.sh/lucide-react@^0.561.0",
-    "framer-motion": "https://esm.sh/framer-motion@^12.23.26",
-    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2",
-    "path": "https://esm.sh/path@^0.12.7",
-    "vite": "https://esm.sh/vite@^7.3.0",
-    "url": "https://esm.sh/url@^0.11.4"
-  }
-}
-</script>
-</head>
-  <body>
+  </head>
+  <body class="bg-white text-gray-800">
     <div id="root"></div>
     <script type="module" src="/index.tsx"></script>
+  </body>
 </html>

@@ -1,243 +1,198 @@
 import React, { useState } from 'react';
-import { CheckCircle, Loader2, Mail, MapPin, Phone } from 'lucide-react';
 
-const CROPS = ['Palm Oil', 'Rice', 'Durian', 'Vegetable', 'Rubber', 'Banana', 'Other'];
-const CHALLENGES = [
-  'Root rot / Basal stem rot',
-  'Stunted growth despite fertilising',
-  'Wilt disease (Fusarium/Pythium)',
-  'High EC / Salt build-up',
-  'Poor fruiting / low yield',
-  'Soil compaction / poor drainage',
-];
+const crops = ['Rice', 'Palm Oil', 'Cotton', 'Vegetables', 'Corn / Maize', 'Sugarcane', 'Other'];
+const challenges = ['Low Yield', 'Soil Degradation', 'High Input Costs', 'Salinity Issues', 'Pest / Disease', 'Other'];
 
-const ContactSection: React.FC = () => {
-  const [form, setForm] = useState({
-    name: '', company: '', country: '', email: '',
-    crop: '', volume: '', challenges: [] as string[], message: '',
-  });
+export default function ContactSection() {
   const [status, setStatus] = useState<'idle' | 'loading' | 'success'>('idle');
+  const [form, setForm] = useState({ name: '', email: '', company: '', crop: '', challenge: '', message: '', hectares: '' });
 
-  const toggle = (item: string) => {
-    setForm((f) => ({
-      ...f,
-      challenges: f.challenges.includes(item)
-        ? f.challenges.filter((x) => x !== item)
-        : [...f.challenges, item],
-    }));
+  const handle = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+    setForm(f => ({ ...f, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const submit = (e: React.FormEvent) => {
     e.preventDefault();
     setStatus('loading');
-    setTimeout(() => setStatus('success'), 2200);
+    setTimeout(() => setStatus('success'), 1800);
   };
 
   return (
-    <div>
-      {/* ── HERO ── */}
-      <section className="relative pt-32 pb-20 contact-bg">
-        <div className="max-w-5xl mx-auto px-6">
-          <p className="io-trigger text-[11px] uppercase tracking-[0.25em] text-terra-amber font-semibold mb-5">
-            Get In Touch
-          </p>
-          <h1 className="io-trigger delay-1 font-serif text-5xl md:text-6xl font-bold text-white leading-[1.08] max-w-2xl">
-            Let's rebuild<br />
-            <em className="not-italic text-terra-green-light">your soil.</em>
-          </h1>
-          <p className="io-trigger delay-2 mt-5 text-lg text-terra-light/65 max-w-lg leading-relaxed">
-            Tell us about your farm, your crop, and your challenge.
-            Our technical team responds within 24 hours.
-          </p>
+    <>
+      {/* Eco Commitment Banner */}
+      <section className="eco-bg py-20 px-6">
+        <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+          <div>
+            <div className="reveal flex items-center gap-3 mb-4">
+              <span className="w-6 h-px bg-[#86efac]" />
+              <span className="text-[#86efac] text-sm font-semibold uppercase tracking-widest">Eco-Commitment</span>
+            </div>
+            <h2 className="reveal font-serif font-bold text-white text-4xl md:text-5xl mb-5" style={{ transitionDelay: '0.1s' }}>
+              Agriculture for<br/>a Healthier Planet
+            </h2>
+            <p className="reveal text-white/70 text-base leading-relaxed mb-8" style={{ transitionDelay: '0.15s' }}>
+              Our products are engineered to be as safe for the environment as they are effective for your crops.
+            </p>
+            <div className="reveal space-y-4" style={{ transitionDelay: '0.2s' }}>
+              {[
+                { t: 'Environmentally Neutral', d: 'Neutral pH of 6–7. No harm to water, soil, or human health.' },
+                { t: 'Verified Safety', d: 'Heavy metals "Not Detected" — verified by AT Analysis Centre.' },
+                { t: 'Zero Residue Risk', d: '99%+ pesticide residue removal. Export-safe, consumer-safe produce.' },
+              ].map((item, i) => (
+                <div key={i} className="flex items-start gap-3">
+                  <div className="w-6 h-6 rounded-full bg-white/20 border-2 border-[#86efac] flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <svg className="w-3 h-3 text-[#86efac]" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <div className="text-white font-semibold text-sm">{item.t}</div>
+                    <div className="text-white/60 text-xs mt-0.5">{item.d}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="reveal" style={{ transitionDelay: '0.2s' }}>
+            <div className="rounded-2xl overflow-hidden h-72 shadow-2xl">
+              <img src="/hero-contact.jpg" alt="Sustainable farm" className="w-full h-full object-cover" />
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* ── FORM + SIDEBAR ── */}
-      <section className="py-20 bg-terra-deep">
-        <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-14">
+      {/* CTA Banner */}
+      <div className="bg-[#0d2818] py-16 px-6 text-center">
+        <h2 className="reveal font-serif font-black text-white text-4xl md:text-5xl mb-4">Unlock Your Farm's Potential Today</h2>
+        <p className="reveal text-white/60 text-lg mb-8 max-w-xl mx-auto" style={{ transitionDelay: '0.1s' }}>
+          Our agronomists are ready to assess your soil conditions and recommend the right Dr. Terraplus programme.
+        </p>
+        <a href="#contact" className="reveal inline-block px-10 py-4 rounded-full bg-[#4ade80] text-[#081a0f] font-bold text-base hover:bg-[#86efac] transition-colors"
+          style={{ transitionDelay: '0.15s' }}>
+          Request a Consultation
+        </a>
+      </div>
+
+      {/* Contact Form */}
+      <section id="contact" className="bg-white py-24 px-6">
+        <div className="max-w-7xl mx-auto grid lg:grid-cols-5 gap-16">
+
           {/* Sidebar */}
-          <div className="space-y-8">
-            <div>
-              <p className="text-[10px] uppercase tracking-widest text-terra-amber font-semibold mb-5">Contact Details</p>
-              <div className="space-y-4 text-sm text-terra-light/60">
-                <div className="flex items-start gap-3">
-                  <MapPin size={16} className="text-terra-green mt-0.5 shrink-0" />
-                  <div>Kuala Lumpur, Malaysia<br /><span className="text-terra-light/35">ASEAN Regional HQ</span></div>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Mail size={16} className="text-terra-green shrink-0" />
-                  <a href="mailto:info@drterraplus.com" className="hover:text-white transition-colors">
-                    info@drterraplus.com
-                  </a>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Phone size={16} className="text-terra-green shrink-0" />
-                  <span>+60 — (Enquire via form)</span>
-                </div>
-              </div>
+          <div className="lg:col-span-2">
+            <div className="reveal flex items-center gap-3 mb-4">
+              <span className="w-6 h-px bg-[#15803d]" />
+              <span className="text-[#15803d] text-sm font-semibold uppercase tracking-widest">Get in Touch</span>
             </div>
+            <h2 className="reveal font-serif font-bold text-[#0d2818] text-3xl md:text-4xl mb-4" style={{ transitionDelay: '0.1s' }}>
+              Request a<br/>Free Consultation
+            </h2>
+            <p className="reveal text-gray-500 text-sm leading-relaxed mb-8" style={{ transitionDelay: '0.15s' }}>
+              Tell us about your farm and current challenges. Our agronomic specialists will review your situation and recommend a tailored Dr. Terraplus programme.
+            </p>
 
-            <div className="pt-4 border-t border-terra-green/10">
-              <p className="text-[10px] uppercase tracking-widest text-terra-amber font-semibold mb-5">Who We Work With</p>
-              <div className="space-y-3 text-sm text-terra-light/55">
-                {['Commercial farms (>10ha)', 'Agri-distributors', 'Plantation companies', 'Cooperative groups', 'Research institutions'].map((item, i) => (
-                  <div key={i} className="flex items-center gap-2">
-                    <div className="w-1.5 h-1.5 rounded-full bg-terra-green/40" />
-                    {item}
+            <div className="reveal space-y-5" style={{ transitionDelay: '0.2s' }}>
+              {[
+                { icon: '📧', label: 'Email', val: 'info@drterraplus.com' },
+                { icon: '📱', label: 'WhatsApp', val: '+60 12-345 6789' },
+                { icon: '🌏', label: 'Serving', val: 'Malaysia, Vietnam, Indonesia, Myanmar, China' },
+              ].map((c, i) => (
+                <div key={i} className="flex items-start gap-4">
+                  <span className="text-2xl">{c.icon}</span>
+                  <div>
+                    <div className="text-xs text-gray-400 font-semibold uppercase tracking-wide">{c.label}</div>
+                    <div className="text-gray-700 text-sm">{c.val}</div>
                   </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="pt-4 border-t border-terra-green/10">
-              <p className="text-[10px] uppercase tracking-widest text-terra-amber font-semibold mb-5">Response Time</p>
-              <div className="text-sm text-terra-light/55">
-                <span className="text-terra-green font-semibold">≤ 24 hours</span> on weekdays<br />
-                Technical proposals: 3–5 business days
-              </div>
+                </div>
+              ))}
             </div>
           </div>
 
           {/* Form */}
-          <div className="md:col-span-2">
+          <div className="lg:col-span-3">
             {status === 'success' ? (
-              <div className="flex flex-col items-center justify-center py-24 gap-6 text-center">
-                <CheckCircle size={56} className="text-terra-green" />
-                <h3 className="font-serif text-3xl font-bold text-white">Enquiry Received.</h3>
-                <p className="text-terra-light/60 max-w-sm leading-relaxed">
-                  Thank you — our technical team will review your soil challenge and respond within 24 hours.
+              <div className="h-full flex flex-col items-center justify-center text-center py-16">
+                <div className="w-20 h-20 rounded-full bg-[#f0fdf4] border-4 border-[#4ade80] flex items-center justify-center mb-6">
+                  <svg className="w-10 h-10 text-[#15803d]" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5"/>
+                  </svg>
+                </div>
+                <h3 className="font-serif font-bold text-[#0d2818] text-3xl mb-3">Thank You!</h3>
+                <p className="text-gray-500 text-base max-w-sm">
+                  We've received your consultation request. Our agronomist will reach out within 1 business day.
                 </p>
-                <button
-                  onClick={() => setStatus('idle')}
-                  className="mt-4 px-6 py-2.5 rounded-full border border-terra-green/30 text-sm text-terra-light/60 hover:text-white hover:border-terra-green transition-all"
-                >
-                  Submit Another
-                </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-5">
-                {/* Row 1 */}
-                <div className="grid sm:grid-cols-2 gap-4">
-                  {[
-                    { id: 'name', label: 'Full Name', type: 'text', placeholder: 'Ahmad Razali' },
-                    { id: 'company', label: 'Company / Farm Name', type: 'text', placeholder: 'Green Valley Estate' },
-                  ].map((f) => (
-                    <div key={f.id}>
-                      <label className="block text-[11px] uppercase tracking-widest text-terra-light/40 font-semibold mb-2">{f.label}</label>
-                      <input
-                        type={f.type}
-                        required
-                        placeholder={f.placeholder}
-                        value={(form as any)[f.id]}
-                        onChange={(e) => setForm({ ...form, [f.id]: e.target.value })}
-                        className="w-full bg-terra-green/5 border border-terra-green/15 rounded-xl px-4 py-3 text-sm text-white placeholder-terra-light/25 focus:outline-none focus:border-terra-green/50 transition-colors"
-                      />
-                    </div>
-                  ))}
-                </div>
-
-                {/* Row 2 */}
-                <div className="grid sm:grid-cols-2 gap-4">
-                  {[
-                    { id: 'country', label: 'Country', type: 'text', placeholder: 'Malaysia' },
-                    { id: 'email', label: 'Email Address', type: 'email', placeholder: 'ahmad@greenfarm.com' },
-                  ].map((f) => (
-                    <div key={f.id}>
-                      <label className="block text-[11px] uppercase tracking-widest text-terra-light/40 font-semibold mb-2">{f.label}</label>
-                      <input
-                        type={f.type}
-                        required
-                        placeholder={f.placeholder}
-                        value={(form as any)[f.id]}
-                        onChange={(e) => setForm({ ...form, [f.id]: e.target.value })}
-                        className="w-full bg-terra-green/5 border border-terra-green/15 rounded-xl px-4 py-3 text-sm text-white placeholder-terra-light/25 focus:outline-none focus:border-terra-green/50 transition-colors"
-                      />
-                    </div>
-                  ))}
-                </div>
-
-                {/* Crop + Volume */}
-                <div className="grid sm:grid-cols-2 gap-4">
+              <form onSubmit={submit} className="reveal space-y-5">
+                <div className="grid sm:grid-cols-2 gap-5">
                   <div>
-                    <label className="block text-[11px] uppercase tracking-widest text-terra-light/40 font-semibold mb-2">Primary Crop Type</label>
-                    <select
-                      value={form.crop}
-                      onChange={(e) => setForm({ ...form, crop: e.target.value })}
-                      className="w-full bg-terra-green/5 border border-terra-green/15 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-terra-green/50 transition-colors"
-                      style={{ colorScheme: 'dark' }}
-                    >
-                      <option value="" disabled>Select crop</option>
-                      {CROPS.map((c) => <option key={c} value={c}>{c}</option>)}
+                    <label className="block text-xs font-semibold text-gray-600 uppercase tracking-wide mb-1.5">Full Name *</label>
+                    <input name="name" required value={form.name} onChange={handle}
+                      className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#15803d] focus:ring-2 focus:ring-[#15803d]/10 transition-all"
+                      placeholder="John Smith" />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-semibold text-gray-600 uppercase tracking-wide mb-1.5">Email *</label>
+                    <input name="email" type="email" required value={form.email} onChange={handle}
+                      className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#15803d] focus:ring-2 focus:ring-[#15803d]/10 transition-all"
+                      placeholder="john@farm.com" />
+                  </div>
+                </div>
+                <div className="grid sm:grid-cols-2 gap-5">
+                  <div>
+                    <label className="block text-xs font-semibold text-gray-600 uppercase tracking-wide mb-1.5">Company / Farm Name</label>
+                    <input name="company" value={form.company} onChange={handle}
+                      className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#15803d] transition-all"
+                      placeholder="Green Valley Farm" />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-semibold text-gray-600 uppercase tracking-wide mb-1.5">Farm Size (Hectares)</label>
+                    <input name="hectares" value={form.hectares} onChange={handle}
+                      className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#15803d] transition-all"
+                      placeholder="e.g. 120" />
+                  </div>
+                </div>
+                <div className="grid sm:grid-cols-2 gap-5">
+                  <div>
+                    <label className="block text-xs font-semibold text-gray-600 uppercase tracking-wide mb-1.5">Primary Crop</label>
+                    <select name="crop" value={form.crop} onChange={handle}
+                      className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#15803d] transition-all bg-white">
+                      <option value="">Select crop type</option>
+                      {crops.map(c => <option key={c}>{c}</option>)}
                     </select>
                   </div>
                   <div>
-                    <label className="block text-[11px] uppercase tracking-widest text-terra-light/40 font-semibold mb-2">Farm Area (Hectares)</label>
-                    <input
-                      type="text"
-                      placeholder="e.g. 50 ha"
-                      value={form.volume}
-                      onChange={(e) => setForm({ ...form, volume: e.target.value })}
-                      className="w-full bg-terra-green/5 border border-terra-green/15 rounded-xl px-4 py-3 text-sm text-white placeholder-terra-light/25 focus:outline-none focus:border-terra-green/50 transition-colors"
-                    />
+                    <label className="block text-xs font-semibold text-gray-600 uppercase tracking-wide mb-1.5">Main Challenge</label>
+                    <select name="challenge" value={form.challenge} onChange={handle}
+                      className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#15803d] transition-all bg-white">
+                      <option value="">Select challenge</option>
+                      {challenges.map(c => <option key={c}>{c}</option>)}
+                    </select>
                   </div>
                 </div>
-
-                {/* Soil Challenges */}
                 <div>
-                  <label className="block text-[11px] uppercase tracking-widest text-terra-light/40 font-semibold mb-3">Soil Challenges (select all that apply)</label>
-                  <div className="grid sm:grid-cols-2 gap-2">
-                    {CHALLENGES.map((item) => (
-                      <button
-                        key={item}
-                        type="button"
-                        onClick={() => toggle(item)}
-                        className={`text-left px-4 py-2.5 rounded-xl text-xs transition-all duration-150 border ${
-                          form.challenges.includes(item)
-                            ? 'bg-terra-green/15 border-terra-green/40 text-white'
-                            : 'bg-terra-green/3 border-terra-green/10 text-terra-light/50 hover:border-terra-green/25 hover:text-terra-light/75'
-                        }`}
-                      >
-                        {form.challenges.includes(item) && <span className="mr-1.5 text-terra-green">✓</span>}
-                        {item}
-                      </button>
-                    ))}
-                  </div>
+                  <label className="block text-xs font-semibold text-gray-600 uppercase tracking-wide mb-1.5">Message</label>
+                  <textarea name="message" rows={4} value={form.message} onChange={handle}
+                    className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#15803d] focus:ring-2 focus:ring-[#15803d]/10 transition-all resize-none"
+                    placeholder="Tell us more about your farm and what you're hoping to achieve..." />
                 </div>
-
-                {/* Message */}
-                <div>
-                  <label className="block text-[11px] uppercase tracking-widest text-terra-light/40 font-semibold mb-2">Additional Notes</label>
-                  <textarea
-                    rows={4}
-                    placeholder="Describe your current situation, previous treatments used, or any specific questions..."
-                    value={form.message}
-                    onChange={(e) => setForm({ ...form, message: e.target.value })}
-                    className="w-full bg-terra-green/5 border border-terra-green/15 rounded-xl px-4 py-3 text-sm text-white placeholder-terra-light/25 focus:outline-none focus:border-terra-green/50 transition-colors resize-none"
-                  />
-                </div>
-
-                {/* Submit */}
-                <button
-                  type="submit"
-                  disabled={status === 'loading'}
-                  className="w-full flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-terra-green text-white font-semibold hover:bg-terra-green-light hover:text-terra-stone transition-all duration-200 disabled:opacity-70"
-                >
+                <button type="submit" disabled={status === 'loading'}
+                  className="w-full py-4 rounded-xl bg-[#0d2818] text-white font-bold text-base hover:bg-[#15803d] transition-colors disabled:opacity-60 flex items-center justify-center gap-3">
                   {status === 'loading' ? (
                     <>
-                      <Loader2 size={18} className="animate-spin" />
-                      Sending…
+                      <svg className="w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/>
+                      </svg>
+                      Sending...
                     </>
-                  ) : (
-                    'Submit Enquiry'
-                  )}
+                  ) : 'Submit Consultation Request'}
                 </button>
+                <p className="text-gray-400 text-xs text-center">We respond within 1 business day. Your information is kept confidential.</p>
               </form>
             )}
           </div>
         </div>
       </section>
-    </div>
+    </>
   );
-};
-
-export default ContactSection;
+}
