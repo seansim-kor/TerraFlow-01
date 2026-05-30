@@ -1,108 +1,83 @@
 import React from 'react';
-import { Linkedin, Mail, MapPin, Phone } from 'lucide-react';
+import { View } from '../App';
 
 interface FooterProps {
-  setView: (view: 'home' | 'about') => void;
+  setView: (v: View) => void;
 }
 
 const Footer: React.FC<FooterProps> = ({ setView }) => {
   return (
-    <footer className="bg-white pt-24 pb-12 border-t border-gray-100">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-16 mb-20">
-          
-          {/* Company Info */}
-          <div className="lg:col-span-2">
-            <div className="flex items-center gap-2 mb-8 cursor-pointer" onClick={() => setView('home')}>
-              <div className="w-8 h-8 rounded-full bg-eroum-sage/20 border border-eroum-sage flex items-center justify-center">
-                 <div className="w-3 h-3 rounded-full bg-eroum-sage" />
+    <footer className="bg-terra-darker border-t border-terra-green/10">
+      <div className="max-w-7xl mx-auto px-6 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+          {/* Brand */}
+          <div className="md:col-span-2">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-9 h-9 rounded-full bg-terra-green flex items-center justify-center">
+                <span className="text-xs font-bold text-white">Dr</span>
               </div>
-              <span className="font-bold text-2xl tracking-tighter text-eroum-dark">
-                TERRA FLOW
-              </span>
+              <div>
+                <div className="text-base font-semibold text-white">Dr. Terraplus</div>
+                <div className="text-[9px] uppercase tracking-[0.2em] text-terra-green">
+                  Biological Soil Restoration
+                </div>
+              </div>
             </div>
-            <p className="text-eroum-dark/50 max-w-sm mb-8 leading-relaxed font-light text-lg">
-              Architects of sustainable resource logistics. Connecting Earth's abundance with global demand through transparent and resilient supply flows.
+            <p className="text-terra-light/50 text-sm leading-relaxed max-w-xs">
+              Rebuilding the soil ecosystem through biological intelligence —
+              not chemicals, but life itself.
+            </p>
+            <p className="mt-6 text-[11px] uppercase tracking-widest text-terra-amber font-semibold">
+              "Rebuild the Soil Ecosystem."
             </p>
           </div>
 
-          {/* Quick Links */}
+          {/* Navigation */}
           <div>
-            <h4 className="font-bold text-eroum-dark mb-8 text-sm uppercase tracking-widest">Navigation</h4>
-            <ul className="space-y-5">
-              <li>
-                <button 
-                  onClick={() => setView('about')}
-                  className="text-eroum-dark/60 hover:text-eroum-sage transition-colors text-left font-medium"
-                >
-                  Philosophy
-                </button>
-              </li>
-              <li>
-                <button 
-                  onClick={() => {
-                    setView('home');
-                    setTimeout(() => document.getElementById('business')?.scrollIntoView({behavior: 'smooth'}), 100);
-                  }}
-                  className="text-eroum-dark/60 hover:text-eroum-sage transition-colors text-left font-medium"
-                >
-                  Supply Solutions
-                </button>
-              </li>
-              <li>
-                <button 
-                  onClick={() => {
-                    setView('home');
-                    setTimeout(() => document.getElementById('business')?.scrollIntoView({behavior: 'smooth'}), 100);
-                  }}
-                  className="text-eroum-dark/60 hover:text-eroum-sage transition-colors text-left font-medium"
-                >
-                  Strategy & Entry
-                </button>
-              </li>
+            <h4 className="text-xs uppercase tracking-widest text-terra-green font-semibold mb-5">Navigate</h4>
+            <ul className="space-y-3">
+              {(['home','philosophy','solutions','products','contact'] as View[]).map((v) => (
+                <li key={v}>
+                  <button
+                    onClick={() => setView(v)}
+                    className="text-sm text-terra-light/50 hover:text-white capitalize transition-colors"
+                  >
+                    {v}
+                  </button>
+                </li>
+              ))}
             </ul>
           </div>
 
           {/* Contact */}
           <div>
-            <h4 className="font-bold text-eroum-dark mb-8 text-sm uppercase tracking-widest">Connect</h4>
-            <ul className="space-y-6">
-              <li className="flex items-start gap-4 text-eroum-dark/60">
-                <MapPin size={22} className="shrink-0 text-eroum-sage" />
-                <span className="font-light">Selangor, Malaysia <br/> & Singapore</span>
-              </li>
-              <li className="flex items-center gap-4 text-eroum-dark/60">
-                <Mail size={22} className="shrink-0 text-eroum-sage" />
-                <a href="mailto:seansim.kor@gmail.com" className="hover:text-eroum-sage font-medium">seansim.kor@gmail.com</a>
-              </li>
-              <li className="flex items-center gap-4 text-eroum-dark/60">
-                <Phone size={22} className="shrink-0 text-eroum-sage" />
-                <a href="https://wa.me/60172018149" target="_blank" rel="noopener noreferrer" className="hover:text-eroum-sage font-medium">
-                  +60 17 201 8149
+            <h4 className="text-xs uppercase tracking-widest text-terra-green font-semibold mb-5">Contact</h4>
+            <ul className="space-y-3 text-sm text-terra-light/50">
+              <li>Kuala Lumpur, Malaysia</li>
+              <li>ASEAN Regional HQ</li>
+              <li className="pt-2">
+                <a href="mailto:info@drterraplus.com" className="text-terra-green hover:text-terra-green-light transition-colors">
+                  info@drterraplus.com
                 </a>
               </li>
+              <li>
+                <a href="tel:+60" className="hover:text-white transition-colors">+60 — (Enquire)</a>
+              </li>
             </ul>
-            
-            {/* Socials */}
-            <div className="mt-8">
-              <a 
-                href="https://www.linkedin.com/in/sean-yssim/" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="inline-flex p-3 bg-eroum-accent/30 rounded-full text-eroum-dark hover:bg-eroum-dark hover:text-white transition-all shadow-sm"
-              >
-                <Linkedin size={20} />
-              </a>
-            </div>
           </div>
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-gray-100 pt-10 flex flex-col md:flex-row justify-between items-center gap-6 text-xs text-gray-400 font-medium">
-          <p>&copy; {new Date().getFullYear()} Terra Flow Pte. Ltd. All rights reserved.</p>
-          <div className="flex gap-10">
-            <a href="#" className="hover:text-eroum-dark uppercase tracking-widest">Privacy</a>
-            <a href="#" className="hover:text-eroum-dark uppercase tracking-widest">Terms</a>
+        <div className="border-t border-terra-green/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+          <p className="text-xs text-terra-light/30">
+            © {new Date().getFullYear()} Dr. Terraplus. All rights reserved.
+          </p>
+          <div className="flex items-center gap-6 text-xs text-terra-light/30">
+            <span>ISO 9001 Certified</span>
+            <span className="w-1 h-1 rounded-full bg-terra-green/40" />
+            <span>Halal Certified</span>
+            <span className="w-1 h-1 rounded-full bg-terra-green/40" />
+            <span>ASEAN Bio-Standard</span>
           </div>
         </div>
       </div>
