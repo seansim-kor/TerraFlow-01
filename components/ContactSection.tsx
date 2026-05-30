@@ -36,7 +36,7 @@ const ContactSection: React.FC = () => {
   return (
     <div>
       {/* ── HERO ── */}
-      <section className="relative pt-32 pb-20 bg-terra-deeper">
+      <section className="relative pt-32 pb-20 contact-bg">
         <div className="max-w-5xl mx-auto px-6">
           <p className="io-trigger text-[11px] uppercase tracking-[0.25em] text-terra-amber font-semibold mb-5">
             Get In Touch

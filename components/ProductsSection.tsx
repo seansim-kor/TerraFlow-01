@@ -114,7 +114,7 @@ const ProductsSection: React.FC<Props> = ({ setView }) => {
   return (
     <div>
       {/* ── HERO ── */}
-      <section className="relative pt-32 pb-20 product-bg">
+      <section className="relative pt-32 pb-20 products-bg">
         <div className="max-w-5xl mx-auto px-6">
           <p className="io-trigger text-[11px] uppercase tracking-[0.25em] text-terra-amber font-semibold mb-5">
             Product Line
