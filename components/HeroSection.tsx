@@ -69,7 +69,7 @@ export default function HeroSection() {
 
         {/* Sub */}
         <p className="reveal text-white/75 text-lg md:text-xl max-w-2xl mb-10 leading-relaxed" style={{ transitionDelay: '0.2s' }}>
-          Dr. Terraplus delivers nano-colloidal biological nutrients with over 95% absorption efficiency — restoring degraded soils and maximising yields across ASEAN agriculture.
+          Dr. Terraplus+ delivers nano-colloidal biological nutrients with over 95% absorption efficiency — restoring degraded soils and maximising yields across ASEAN agriculture.
         </p>
 
         {/* CTAs */}

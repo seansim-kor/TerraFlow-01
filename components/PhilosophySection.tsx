@@ -11,7 +11,7 @@ const commitments = [
   },
   {
     title: 'Farmer Prosperity',
-    desc: 'Better yields, lower input costs, and healthier produce — Dr. Terraplus is engineered to directly improve the livelihoods of every farmer who uses it.',
+    desc: 'Better yields, lower input costs, and healthier produce — Dr. Terraplus+ is engineered to directly improve the livelihoods of every farmer who uses it.',
   },
   {
     title: 'Science-Backed Innovation',
@@ -47,7 +47,7 @@ export default function PhilosophySection() {
               Sustainable Stewardship<br/>for Future Generations
             </h2>
             <p className="reveal text-gray-500 text-base leading-relaxed mb-10" style={{ transitionDelay: '0.15s' }}>
-              Dr. Terraplus is built on a core belief: healthy soil is the foundation of healthy food, healthy economies, and a healthy planet. Every product we create reflects a commitment to biological integrity over chemical convenience.
+              Dr. Terraplus+ is built on a core belief: healthy soil is the foundation of healthy food, healthy economies, and a healthy planet. Every product we create reflects a commitment to biological integrity over chemical convenience.
             </p>
 
             <div className="grid sm:grid-cols-2 gap-6">

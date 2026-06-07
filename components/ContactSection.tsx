@@ -58,7 +58,7 @@ export default function ContactSection() {
       <div className="bg-[#0d2818] py-16 px-6 text-center">
         <h2 className="reveal font-serif font-black text-white text-4xl md:text-5xl mb-4">Unlock Your Farm's Potential Today</h2>
         <p className="reveal text-white/60 text-lg mb-8 max-w-xl mx-auto" style={{ transitionDelay: '0.1s' }}>
-          Our agronomists are ready to assess your soil conditions and recommend the right Dr. Terraplus programme.
+          Our agronomists are ready to assess your soil conditions and recommend the right Dr. Terraplus+ programme.
         </p>
         <a href="#contact" className="reveal inline-block px-10 py-4 rounded-full bg-[#4ade80] text-[#081a0f] font-bold text-base hover:bg-[#86efac] transition-colors"
           style={{ transitionDelay: '0.15s' }}>
@@ -80,7 +80,7 @@ export default function ContactSection() {
               Request a<br/>Free Consultation
             </h2>
             <p className="reveal text-gray-500 text-sm leading-relaxed mb-8" style={{ transitionDelay: '0.15s' }}>
-              Tell us about your farm and current challenges. Our agronomic specialists will review your situation and recommend a tailored Dr. Terraplus programme.
+              Tell us about your farm and current challenges. Our agronomic specialists will review your situation and recommend a tailored Dr. Terraplus+ programme.
             </p>
 
             <div className="reveal space-y-5" style={{ transitionDelay: '0.2s' }}>
@@ -104,7 +104,7 @@ export default function ContactSection() {
           <div className="lg:col-span-3">
             <form action="https://formsubmit.co/info@marencore.com" method="POST" className="reveal space-y-5">
               <input type="hidden" name="_next" value="https://terraflow-01.onrender.com/" />
-              <input type="hidden" name="_subject" value="New Dr. Terraplus Consultation Request" />
+              <input type="hidden" name="_subject" value="New Dr. Terraplus+ Consultation Request" />
               <input type="hidden" name="_captcha" value="false" />
               <input type="hidden" name="_template" value="table" />
                 <div className="grid sm:grid-cols-2 gap-5">

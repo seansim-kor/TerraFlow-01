@@ -29,7 +29,7 @@ const problems = [
     ),
     title: 'Environmental Pressure',
     desc: 'Chemical runoff pollutes waterways, harms ecosystems, and leaves harmful residues on crops — threatening both consumer health and regulatory compliance across export markets.',
-    stat: '99%+', statLabel: 'residue removal with Dr. Terraplus',
+    stat: '99%+', statLabel: 'residue removal with Dr. Terraplus+',
   },
 ];
 

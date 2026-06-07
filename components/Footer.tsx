@@ -1,7 +1,7 @@
 import React from 'react';
 
 const footerLinks = {
-  'Company': ['About Dr. Terraplus', 'Our Philosophy', 'Eco-Commitment', 'News & Updates'],
+  'Company': ['About Dr. Terraplus+', 'Our Philosophy', 'Eco-Commitment', 'News & Updates'],
   'Solutions': ['For Rice Farmers', 'For Palm Oil Plantations', 'For Cotton & Grain', 'For Vegetables'],
   'Resources': ['Field Test Reports', 'Technical Data Sheet', 'Application Guide', 'FAQ'],
 };
@@ -22,7 +22,7 @@ export default function Footer() {
                 </svg>
               </div>
               <div>
-                <div className="font-serif font-bold text-white text-lg leading-none">Dr. Terraplus</div>
+                <div className="font-serif font-bold text-white text-lg leading-none">Dr. Terraplus+</div>
                 <div className="text-[10px] text-[#4ade80] uppercase tracking-widest leading-none mt-0.5">Soil Restoration Science</div>
               </div>
             </div>
@@ -55,7 +55,7 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-white/30 text-xs">© {new Date().getFullYear()} Dr. Terraplus. All rights reserved. Powered by EF Solution Asia.</p>
+          <p className="text-white/30 text-xs">© {new Date().getFullYear()} Dr. Terraplus+. All rights reserved. Powered by EF Solution Asia.</p>
           <div className="flex gap-6">
             {['Privacy Policy', 'Terms of Use', 'Contact'].map(l => (
               <a key={l} href="#" className="text-white/30 text-xs hover:text-white/60 transition-colors">{l}</a>

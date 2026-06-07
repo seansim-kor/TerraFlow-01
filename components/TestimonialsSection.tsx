@@ -16,7 +16,7 @@ const testimonials = [
     color: 'from-teal-500 to-emerald-700',
   },
   {
-    quote: "As a large-scale palm oil producer, efficiency and sustainability are key. Dr. Terraplus delivers on both. Our trees are healthier and production costs are down 50%.",
+    quote: "As a large-scale palm oil producer, efficiency and sustainability are key. Dr. Terraplus+ delivers on both. Our trees are healthier and production costs are down 50%.",
     name: 'Ahmad bin Ishak',
     role: 'Plantation Manager, Indonesia',
     avatar: 'AI',

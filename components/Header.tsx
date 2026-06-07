@@ -32,7 +32,7 @@ export default function Header() {
             </svg>
           </div>
           <div>
-            <div className="font-serif font-bold text-white text-lg leading-none">Dr. Terraplus</div>
+            <div className="font-serif font-bold text-white text-lg leading-none">Dr. Terraplus+</div>
             <div className="text-[10px] text-[#4ade80] uppercase tracking-widest leading-none mt-0.5">Soil Restoration Science</div>
           </div>
         </a>

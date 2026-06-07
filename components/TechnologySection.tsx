@@ -12,7 +12,7 @@ const steps = [
     num: '02',
     title: 'Hyper-Efficient Absorption',
     desc: 'Nano-sized nutrients bypass conventional absorption barriers. Crops absorb over 95% of nutrition directly through leaf stomata and root cell walls — driving rapid, visible growth.',
-    detail: 'Conventional fertilizers: 20% absorption. Dr. Terraplus: 95%+. The difference is measurable within 7–14 days.',
+    detail: 'Conventional fertilizers: 20% absorption. Dr. Terraplus+: 95%+. The difference is measurable within 7–14 days.',
     img: '/hero-solutions.jpg',
   },
   {
@@ -39,7 +39,7 @@ export default function TechnologySection() {
             A 3-Step Revolution<br/>in Crop Nutrition
           </h2>
           <p className="reveal text-gray-500 text-lg" style={{ transitionDelay: '0.15s' }}>
-            Simple to apply. Extraordinary in results. Dr. Terraplus works at the biological level where conventional products cannot reach.
+            Simple to apply. Extraordinary in results. Dr. Terraplus+ works at the biological level where conventional products cannot reach.
           </p>
         </div>
 
