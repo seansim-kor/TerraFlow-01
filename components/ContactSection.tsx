@@ -4,17 +4,10 @@ const crops = ['Rice', 'Palm Oil', 'Cotton', 'Vegetables', 'Corn / Maize', 'Suga
 const challenges = ['Low Yield', 'Soil Degradation', 'High Input Costs', 'Salinity Issues', 'Pest / Disease', 'Other'];
 
 export default function ContactSection() {
-  const [status, setStatus] = useState<'idle' | 'loading' | 'success'>('idle');
   const [form, setForm] = useState({ name: '', email: '', company: '', crop: '', challenge: '', message: '', hectares: '' });
 
   const handle = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     setForm(f => ({ ...f, [e.target.name]: e.target.value }));
-  };
-
-  const submit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setStatus('loading');
-    setTimeout(() => setStatus('success'), 1800);
   };
 
   return (
@@ -92,7 +85,7 @@ export default function ContactSection() {
 
             <div className="reveal space-y-5" style={{ transitionDelay: '0.2s' }}>
               {[
-                { icon: '📧', label: 'Email', val: 'info@drterraplus.com' },
+                { icon: '📧', label: 'Email', val: 'info@marencore.com' },
                 { icon: '📱', label: 'WhatsApp', val: '+60 12-345 6789' },
                 { icon: '🌏', label: 'Serving', val: 'Malaysia, Vietnam, Indonesia, Myanmar, China' },
               ].map((c, i) => (
@@ -109,20 +102,9 @@ export default function ContactSection() {
 
           {/* Form */}
           <div className="lg:col-span-3">
-            {status === 'success' ? (
-              <div className="h-full flex flex-col items-center justify-center text-center py-16">
-                <div className="w-20 h-20 rounded-full bg-[#f0fdf4] border-4 border-[#4ade80] flex items-center justify-center mb-6">
-                  <svg className="w-10 h-10 text-[#15803d]" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5"/>
-                  </svg>
-                </div>
-                <h3 className="font-serif font-bold text-[#0d2818] text-3xl mb-3">Thank You!</h3>
-                <p className="text-gray-500 text-base max-w-sm">
-                  We've received your consultation request. Our agronomist will reach out within 1 business day.
-                </p>
-              </div>
-            ) : (
-              <form onSubmit={submit} className="reveal space-y-5">
+            <form action="https://formspree.io/f/xpwqbboy" method="POST" className="reveal space-y-5">
+              <input type="hidden" name="_next" value="https://terraflow-01.onrender.com/" />
+              <input type="hidden" name="_subject" value="New Dr. Terraplus Consultation Request" />
                 <div className="grid sm:grid-cols-2 gap-5">
                   <div>
                     <label className="block text-xs font-semibold text-gray-600 uppercase tracking-wide mb-1.5">Full Name *</label>
