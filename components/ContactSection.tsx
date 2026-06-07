@@ -159,21 +159,12 @@ export default function ContactSection() {
                     className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#15803d] focus:ring-2 focus:ring-[#15803d]/10 transition-all resize-none"
                     placeholder="Tell us more about your farm and what you're hoping to achieve..." />
                 </div>
-                <button type="submit" disabled={status === 'loading'}
-                  className="w-full py-4 rounded-xl bg-[#0d2818] text-white font-bold text-base hover:bg-[#15803d] transition-colors disabled:opacity-60 flex items-center justify-center gap-3">
-                  {status === 'loading' ? (
-                    <>
-                      <svg className="w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24">
-                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/>
-                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/>
-                      </svg>
-                      Sending...
-                    </>
-                  ) : 'Submit Consultation Request'}
+                <button type="submit"
+                  className="w-full py-4 rounded-xl bg-[#0d2818] text-white font-bold text-base hover:bg-[#15803d] transition-colors flex items-center justify-center gap-3">
+                  Submit Consultation Request
                 </button>
                 <p className="text-gray-400 text-xs text-center">We respond within 1 business day. Your information is kept confidential.</p>
               </form>
-            )}
           </div>
         </div>
       </section>
