@@ -102,9 +102,11 @@ export default function ContactSection() {
 
           {/* Form */}
           <div className="lg:col-span-3">
-            <form action="https://formspree.io/f/xpqepoep" method="POST" className="reveal space-y-5">
+            <form action="https://formsubmit.co/info@marencore.com" method="POST" className="reveal space-y-5">
               <input type="hidden" name="_next" value="https://terraflow-01.onrender.com/" />
               <input type="hidden" name="_subject" value="New Dr. Terraplus Consultation Request" />
+              <input type="hidden" name="_captcha" value="false" />
+              <input type="hidden" name="_template" value="table" />
                 <div className="grid sm:grid-cols-2 gap-5">
                   <div>
                     <label className="block text-xs font-semibold text-gray-600 uppercase tracking-wide mb-1.5">Full Name *</label>
