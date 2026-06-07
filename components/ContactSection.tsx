@@ -102,7 +102,7 @@ export default function ContactSection() {
 
           {/* Form */}
           <div className="lg:col-span-3">
-            <form action="https://formspree.io/f/xpwqbboy" method="POST" className="reveal space-y-5">
+            <form action="https://formspree.io/f/xpqepoep" method="POST" className="reveal space-y-5">
               <input type="hidden" name="_next" value="https://terraflow-01.onrender.com/" />
               <input type="hidden" name="_subject" value="New Dr. Terraplus Consultation Request" />
                 <div className="grid sm:grid-cols-2 gap-5">
