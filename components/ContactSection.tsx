@@ -86,7 +86,7 @@ export default function ContactSection() {
             <div className="reveal space-y-5" style={{ transitionDelay: '0.2s' }}>
               {[
                 { icon: '📧', label: 'Email', val: 'info@marencore.com' },
-                { icon: '📱', label: 'WhatsApp', val: '+60 17-201 8149' },
+                { icon: '📱', label: 'WhatsApp', val: '+60 17 201 8149' },
                 { icon: '🌏', label: 'Serving', val: 'Malaysia, Vietnam, Indonesia, Myanmar, China' },
               ].map((c, i) => (
                 <div key={i} className="flex items-start gap-4">
